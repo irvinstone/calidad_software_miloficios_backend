@@ -42,6 +42,12 @@ db.recomendado.distrito             = db.recomendado.belongsTo(db.distrito, {for
 db.recomendado.oficio               = db.recomendado.belongsTo(db.oficio, {foreignKey: 'oficio_id'});
 db.recomendado.usuario_perfil       = db.recomendado.belongsTo(db.usuario_perfil, {foreignKey: 'usuario_perfil_id'});
 
+db.usuario_perfil.usuario = db.usuario_perfil.belongsTo(db.usuario,{foreignKey:'usuario_id'});
+db.usuario_perfil.perfil = db.usuario_perfil.belongsTo(db.perfil,{foreignKey:'perfil_id'});
+
+db.lista.lista_recomendado = db.lista.hasMany(db.lista_recomendado,{foreignKey:'lista_id'});
+db.lista.usuario_perfil = db.lista.belongsTo(db.usuario_perfil,{foreignKey:'usuario_perfil_id'});
+
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

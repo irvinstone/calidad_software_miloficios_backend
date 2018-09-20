@@ -18,7 +18,8 @@ router.post('/', function (req, res, next) {
     // req.body.password = crypto.createHash('sha256').update(req.body.password + config.token.secret).digest('hex');
     models.usuario.create(req.body, {
             include: {
-                association: models.usuario.usuario_perfil
+                // association: models.usuario.usuario_perfil
+                all:true
             }
         }
     ).then(function (result) {
@@ -30,7 +31,9 @@ router.post('/', function (req, res, next) {
 router.get('/perfil', function(req, res, next) {
     // req.body.password = crypto.createHash('sha256').update(req.body.password + config.token.secret).digest('hex');
     models.usuario_perfil.findAll({
+        where:req.query,
         include: [{
+            // association: models.usuario_perfil.usuario
             all:true
         }]
     }).then(function (result) {
