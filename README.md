@@ -74,7 +74,7 @@ Instalar dependecias de desarrollo
     $ sequelize db:create
 ```
 Levantar el servidor local por defecto localhost:3000 , el siguiente comando mapeara y 
-syncronizara las tablas en la bd preestablecida
+syncronizara las tablas en la bd preestablecida. Ojo ubicarse en la raiz del proyecto
 
 ```
     $ npm start
