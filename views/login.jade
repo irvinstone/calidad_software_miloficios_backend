@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1= title
+    p Welcome to #{title}
+    each people in data
+        li= people.name
+    form(method='POST',action='/login')
+        div.form-group
+            label(for='email') Email:
+            input#email.form-control(type='email', placeholder='name@email.com' name='email')
+        div.form-group
+            label(for='password') Password:
+            input#password.form-control(type='password', placeholder='contraseña' name='password')
+        button.btn.btn-primary(type='submit') Login
