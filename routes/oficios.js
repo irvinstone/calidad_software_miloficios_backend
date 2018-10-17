@@ -30,6 +30,7 @@ router.post('/', function (req, res, next) {
 router.get('/categoria', function(req, res, next) {
     // req.body.password = crypto.createHash('sha256').update(req.body.password + config.token.secret).digest('hex');
     models.categoria.findAll({
+        where:req.query,
         include: [{
             all:true
         }]
