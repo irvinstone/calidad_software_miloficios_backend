@@ -22,12 +22,18 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		email: {
 			type: DataTypes.STRING(45),
-			allowNull: false
-		},
+			allowNull: false,
+            unique: true
+        },
 		contrasena: {
 			type: DataTypes.STRING(100),
 			allowNull: false
 		},
+        telefono: {
+            type: DataTypes.STRING(45),
+            allowNull: false,
+            unique: true
+        },
 	}, {
 		tableName: 'usuario',
         timestamps:false
