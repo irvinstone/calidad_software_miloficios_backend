@@ -11,6 +11,7 @@ var oficiosRouter = require('./routes/oficios');
 var atributosRouter = require('./routes/atributos');
 var recomendadosRouter = require('./routes/recomendados');
 var listasRouter = require('./routes/listas');
+var distritoRouter = require('./routes/distritos');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/oficio', oficiosRouter);
 app.use('/atributo', atributosRouter);
 app.use('/recomendado', recomendadosRouter);
 app.use('/lista', listasRouter);
+app.use('/distrito', distritoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
