@@ -4,11 +4,36 @@ var router = express.Router();
 var models = require('../orm/models');
 
 /* GET users listing. */
+// router.get('/', function(req, res, next) {
+//     models.recomendado.findAll({
+//         where:req.query,
+//         include: [{
+//             all:true
+//         }]
+//     }).then(function (users) {
+//         res.json(users)
+//     });
+// });
 router.get('/', function(req, res, next) {
+    queryCategoria = req.query.categoria;
+    queryOficio    = req.query.oficio;
+    queryDistrito  = req.query.distrito;
+    delete req.query.categoria;
+    delete req.query.oficio;
+    delete req.query.distrito;
+    queryRecomendado = req.query;
     models.recomendado.findAll({
-        where:req.query,
+        where:queryRecomendado,
         include: [{
-            all:true
+            model: models.oficio,
+            where: queryOficio,
+            include:{
+                model:models.categoria,
+                where:queryCategoria
+            }
+        },{
+            model: models.distrito,
+            where: queryDistrito
         }]
     }).then(function (users) {
         res.json(users)

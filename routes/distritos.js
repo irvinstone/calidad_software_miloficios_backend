@@ -2,11 +2,23 @@ var express = require('express');
 var router = express.Router();
 
 var models = require('../orm/models');
+var Op      = models.Sequelize.Op;
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     models.distrito.findAll({
         where:req.query
+    }).then(function (result) {
+        res.json(result)
+    });
+});
+router.get('/predict', function(req, res, next) {
+    models.distrito.findAll({
+        where:{
+            nombre: {
+                [Op.like]: "%"+req.query.data+"%"
+            }
+        }
     }).then(function (result) {
         res.json(result)
     });
