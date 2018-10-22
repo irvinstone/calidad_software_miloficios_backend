@@ -20,7 +20,7 @@ router.post('/', function (req, res, next) {
     ).then(function (result) {
         res.json(result)
     }).catch(function (err) {
-        res.json(err)
+        if(err)res.status(400).json(err);
     });
 });
 router.post('/recomendado', function (req, res, next) {
@@ -29,7 +29,7 @@ router.post('/recomendado', function (req, res, next) {
     ).then(function (result) {
         res.json(result)
     }).catch(function (err) {
-        res.json(err)
+        if(err)res.status(400).json(err);
     });
 });
 module.exports = router;

@@ -24,7 +24,7 @@ router.post('/', function (req, res, next) {
     ).then(function (result) {
         res.json(result)
     }).catch(function (err) {
-        res.json(err)
+        if(err)res.status(400).json(err);
     });
 });
 router.get('/categoria', function(req, res, next) {
@@ -37,7 +37,7 @@ router.get('/categoria', function(req, res, next) {
     }).then(function (result) {
         res.json(result)
     }).catch(function (err) {
-        res.json(err)
+        if(err)res.status(400).json(err);
     });
 });
 router.post('/categoria', function(req, res, next) {
@@ -49,7 +49,7 @@ router.post('/categoria', function(req, res, next) {
     }).then(function (result) {
         res.json(result)
     }).catch(function (err) {
-        res.json(err)
+        if(err)res.status(400).json(err);
     });
 });
 router.get('/distrito', function(req, res, next) {
@@ -62,7 +62,7 @@ router.get('/distrito', function(req, res, next) {
     }).then(function (result) {
         res.json(result)
     }).catch(function (err) {
-        res.json(err)
+        if(err)res.status(400).json(err);
     });
 });
 module.exports = router;

@@ -24,7 +24,7 @@ router.post('/', function (req, res, next) {
     ).then(function (result) {
         res.json(result)
     }).catch(function (err) {
-        res.json(err)
+        if(err)res.status(400).json(err);
     });
 });
 router.get('/atributo', function(req, res, next) {
@@ -36,7 +36,7 @@ router.get('/atributo', function(req, res, next) {
     }).then(function (result) {
         res.json(result)
     }).catch(function (err) {
-        res.json(err)
+        if(err)res.status(400).json(err);
     });
 });
 router.post('/atributo', function(req, res, next) {
@@ -48,19 +48,7 @@ router.post('/atributo', function(req, res, next) {
     }).then(function (result) {
         res.json(result)
     }).catch(function (err) {
-        res.json(err)
+        if(err)res.status(400).json(err);
     });
 });
-// router.post('/auth', function(req, res, next) {
-//     recomendado_atributoService.authenticar(req.body,function (err,success) {
-//         if(err)res.json(err);
-//         else res.json(success);
-//     })
-// });
-// router.post('/access', function(req, res, next) {
-//     recomendado_atributoService.tieneAcceso(req,function (err,success) {
-//         if(err)res.json(err);
-//         else res.json(success);
-//     })
-// });
 module.exports = router;
