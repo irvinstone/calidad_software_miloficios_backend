@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "server": "node ./bin/www",
+    "sync": "node ./bin/sync",
+    "mapinitdata": "sequelize --seeders-path ./orm/seeders --config ./orm/config/config.json db:seed:all",
+    "start": "npm run sync && npm run mapinitdata && npm run server"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

@@ -1,12 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "1234",
     "database": "calidad_software",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "charset": "utf8",
-    "collate": "utf8_general_ci"
+    "collate": "utf8_general_ci",
+    "dialectOptions": {
+      "multipleStatements": true
+    }
 
   },
   "test": {
