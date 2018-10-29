@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+
+    p users
+    each people in data
+            li= people.nombres
+            li= people.usuario_id
+            li= people.email
+            .form-group
+                .col-md-4
+                    button#Guardar.btn.btn-primary(type='button') Guardar
+                    button#Eliminar.btn.btn-warning(type='button') Eliminar
+
+
