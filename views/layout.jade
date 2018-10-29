@@ -1,9 +1,19 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
-  footer
-    p Copyright 2014 The Awesome People
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+    .container
+        .row
+            .col-sm-12
+                block content
+            .col-sm-4
+            .col-sm-4
+            .col-sm-4
+            .col-sm-4
+            .col-sm-4
+            .col-sm-4
+            .col-sm-12
+                footer
+                    p Copyright 2014 The Awesome People

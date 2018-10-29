@@ -10,7 +10,7 @@ function generarToken(data, callback) {
     models.usuario.findOne({where: {email: data.email}}).then(function (usuario) {
         if (usuario) {
             console.log(usuario.contrasena);
-            console.log(crypto.createHash('sha256').update("12345" + config.token.secret).digest('hex'));
+            // console.log(crypto.createHash('sha256').update("12345" + config.token.secret).digest('hex'));
             console.log(crypto.createHash('sha256').update(data.contrasena + config.token.secret).digest('hex'));
             if (usuario.contrasena == crypto.createHash('sha256').update(data.contrasena + config.token.secret).digest('hex')) {
                 jwt.sign({

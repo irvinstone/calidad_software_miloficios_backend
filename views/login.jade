@@ -1,15 +1,26 @@
 extends layout
 
 block content
-    h1= title
-    p Welcome to #{title}
-    each people in data
-        li= people.name
-    form(method='POST',action='/login')
-        div.form-group
-            label(for='email') Email:
-            input#email.form-control(type='email', placeholder='name@email.com' name='email')
-        div.form-group
-            label(for='password') Password:
-            input#password.form-control(type='password', placeholder='contraseña' name='password')
-        button.btn.btn-primary(type='submit') Login
+
+    form.form-horizontal(method='POST',action='/auth')
+        fieldset
+            // Form Name
+            legend login
+            // Text input
+            .form-group
+                label.col-md-4.control-label(for='email') email
+                .col-md-4
+                    input#email.form-control.input-md(name='email', type='email', placeholder='email', required='')
+            // Password input
+            .form-group
+                label.col-md-4.control-label(for='password') password
+                .col-md-4
+                    input#password.form-control.input-md(name='contrasena', type='password', placeholder='password', required='')
+            // Button
+            .form-group
+                .col-md-4
+                    button#Ingresar.btn.btn-primary(type='submit') Ingresar
+            .form-group
+                .col-md-4
+                    p= err
+
