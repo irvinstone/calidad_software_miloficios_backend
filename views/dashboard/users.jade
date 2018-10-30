@@ -1,6 +1,6 @@
-extends ../layout
+extends ../dashboard
 
-block content
+block field
 
     p users
     each people in data
@@ -9,7 +9,7 @@ block content
             li= people.email
             .form-group
                 .col-md-4
-                    button#Editar.btn.btn-primary(type='button') Editar
+                    a(href='/dashboard/users/?usuario_id='+people.usuario_id): button#Editar.btn.btn-primary(type='button') Editar
                     button#Eliminar.btn.btn-warning(type='button') Eliminar
 
 
