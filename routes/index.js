@@ -98,7 +98,7 @@ router.post('/dashboard/recomendado/update/:id', function(req, res, next) {
         telefono:req.params.id
     }).then(function (user) {
         if(user)
-            user.updateA({
+            user.update({
                 telefono:req.body.telefono,
                 nombres:req.body.nombres,
                 apellidos:req.body.apellidos,
