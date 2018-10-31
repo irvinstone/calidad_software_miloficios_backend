@@ -95,7 +95,9 @@ router.get('/dashboard/recomendado/:id', function(req, res, next) {
 });
 router.post('/dashboard/recomendado/update/:id', function(req, res, next) {
     models.recomendado.findOne({
-        telefono:req.params.id
+        where:{
+            telefono:req.params.id
+        }
     }).then(function (user) {
         if(user)
             user.update({
