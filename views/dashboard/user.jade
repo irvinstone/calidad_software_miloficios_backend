@@ -2,14 +2,43 @@ extends ../layout
 
 block content
 
-    p users
-    each people in data
-            li= people.nombres
-            li= people.usuario_id
-            li= people.email
+    p user
+
+    form.form-horizontal(method='POST',action='/auth')
+        fieldset
+            // Form Name
+            legend Usuario
+            // Text input
+            .form-group
+                label.col-md-4.control-label(for='email') email
+                .col-md-4
+                    input#email.form-control.input-md(value=data.email name='email', type='email', placeholder='email', required='')
+            // Text input
+            .form-group
+                label.col-md-4.control-label(for='nombres') nombres
+                .col-md-4
+                    input#nombres.form-control.input-md(value=data.nombres name='nombres', type='nombres', placeholder='nombres', required='')
+            // Text input
+            .form-group
+                label.col-md-4.control-label(for='apellidos') apellidos
+                .col-md-4
+                    input#apellidos.form-control.input-md(value=data.apellidos name='apellidos', type='apellidos', placeholder='apellidos', required='')
+            // Text input
+            .form-group
+                label.col-md-4.control-label(for='edad') edad
+                .col-md-4
+                    input#edad.form-control.input-md(value=data.edad name='edad', type='edad', placeholder='edad', required='')
+            // Password input
+            .form-group
+                label.col-md-4.control-label(for='telefono') telefono
+                .col-md-4
+                    input#telefono.form-control.input-md(value=data.telefono name='telefono', type='telefono', placeholder='telefono', required='')
+            // Button
             .form-group
                 .col-md-4
-                    button#Guardar.btn.btn-primary(type='button') Guardar
-                    button#Eliminar.btn.btn-warning(type='button') Eliminar
+                    button#Guardar.btn.btn-primary(type='submit') Guardar
+            .form-group
+                .col-md-4
+                    p= err
 
 

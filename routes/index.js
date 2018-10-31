@@ -29,5 +29,15 @@ router.get('/dashboard/users', function(req, res, next) {
              res.render('dashboard/users', { title: 'Dashaboard' ,data:users});
         });
 });
+router.get('/dashboard/user/:id', function(req, res, next) {
+    models.usuario.findOne({
+        usuario_id:req.params.id,
+        include: [{
+            all:true
+        }]
+    }).then(function (users) {
+        res.render('dashboard/user', { title: 'Dashaboard' ,data:users});
+    });
+});
 
 module.exports = router;
