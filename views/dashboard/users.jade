@@ -2,14 +2,15 @@ extends ../dashboard
 
 block field
 
-    fieldset usuarios
+    fieldset
+        legend Usuarios
         each people in data
-                li= nombre =people.nombres
-                //li= people.usuario_id
-                li= people.email
-                .form-group
-                    .col-md-4
-                        a(href='/dashboard/user/'+people.usuario_id): button#Editar.btn.btn-primary(type='button') Editar
-                        button#Eliminar.btn.btn-warning(type='button') Eliminar
+                fieldset
+                    p= nombre =people.nombres
+                    p= people.email
+                    .form-group
+                        .col-md-4
+                            a(href='/dashboard/user/'+people.usuario_id): button#Editar.btn.btn-primary(type='button') Editar
+                            button#Eliminar.btn.btn-warning(type='button') Eliminar
 
 

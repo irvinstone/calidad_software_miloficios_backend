@@ -1,0 +1,46 @@
+extends ../dashboard
+
+block field
+
+    form.form-horizontal(method='POST',action='/dashboard/recomendado/update/'+data.telefono)
+        fieldset
+            // Form Name
+            legend Recomendado
+            .form-group
+                label.col-md-4.control-label(for='telefono') telefono
+                .col-md-4
+                    input#telefono.form-control.input-md(value=data.telefono name='telefono', type='telefono', placeholder='telefono', required='' , disabled=true)
+            .form-group
+                label.col-md-4.control-label(for='nombres') nombres
+                .col-md-4
+                    input#nombres.form-control.input-md(value=data.nombres name='nombres', type='nombres', placeholder='nombres', required='')
+            .form-group
+                label.col-md-4.control-label(for='apellidos') apellidos
+                .col-md-4
+                    input#apellidos.form-control.input-md(value=data.apellidos name='apellidos', type='apellidos', placeholder='apellidos', required='')
+
+            .form-group
+                label.col-md-4.control-label(for='direccion') direccion
+                .col-md-4
+                    input#direccion.form-control.input-md(value=data.direccion name='direccion', type='direccion', placeholder='direccion', required='')
+
+            .form-group
+                label.col-md-4.control-label(for='descripcion') descripcion
+                .col-md-4
+                    input#descripcion.form-control.input-md(value=data.descripcion name='descripcion', type='descripcion', placeholder='descripcion', required='')
+            .form-group
+                label.col-md-4.control-label(for='descripcion') foto
+                .col-md-4
+                    input#foto.form-control.input-md(value=data.foto name='foto', type='foto', placeholder='foto', required='')
+
+            // Button
+            .form-group
+                .col-md-4
+                    button#Guardar.btn.btn-primary(type='submit') Guardar
+                .col-md-4
+                    a(href='/dashboard/recomendados'): button#Editar.btn.btn-primary(type='button') Cancelar
+            .form-group
+                .col-md-4
+                    p= err
+
+

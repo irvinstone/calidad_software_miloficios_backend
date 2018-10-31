@@ -19,6 +19,9 @@ router.post('/auth', function(req, res, next) {
         else res.render('dashboard', { title: 'Dashaboard' ,data:success});
     })
 });
+/**
+ * Usuarios
+ */
 router.get('/dashboard/users', function(req, res, next) {
         models.usuario.findAll({
             where:req.query,
@@ -60,6 +63,54 @@ router.post('/dashboard/user/update/:id', function(req, res, next) {
                 res.redirect('/dashboard/users/')
             });
         else res.redirect('/dashboard/users/')
+    });
+});
+
+/**
+ * Recomendados
+ */
+router.get('/dashboard/recomendados', function(req, res, next) {
+    models.recomendado.findAll({
+        where:req.query,
+        include: [{
+            all:true
+        }]
+    }).then(function (users) {
+        res.render('dashboard/recomendados', { title: 'Dashaboard' ,data:users});
+    });
+});
+router.get('/dashboard/recomendado/:id', function(req, res, next) {
+    models.recomendado.findOne({
+        where:{
+            telefono:req.params.id,
+        },
+        include: [{
+            all:true
+        }]
+    }).then(function (users) {
+        if(users)
+            res.render('dashboard/recomendado', { title: 'Dashaboard' ,data:users});
+        else res.redirect('/dashboard/recomendados/')
+    });
+});
+router.post('/dashboard/recomendado/update/:id', function(req, res, next) {
+    models.recomendado.findOne({
+        telefono:req.params.id
+    }).then(function (user) {
+        if(user)
+            user.updateA({
+                telefono:req.body.telefono,
+                nombres:req.body.nombres,
+                apellidos:req.body.apellidos,
+                direccion:req.body.direccion,
+                descripcion:req.body.descripcion,
+                foto:req.body.foto,
+            }).then(function (user) {
+                res.redirect('/dashboard/recomendado/'+user.telefono)
+            }).catch(function (err) {
+                res.redirect('/dashboard/recomendados/')
+            });
+        else res.redirect('/dashboard/recomendados/')
     });
 });
 
