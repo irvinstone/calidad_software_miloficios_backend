@@ -106,7 +106,7 @@ router.post('/dashboard/recomendado/update/:id', function(req, res, next) {
                 descripcion:req.body.descripcion,
                 foto:req.body.foto,
             }).then(function (user) {
-                res.redirect('/dashboard/recomendado/'+user.telefono)
+                res.redirect('/dashboard/recomendado/'+req.params.id)
             }).catch(function (err) {
                 res.redirect('/dashboard/recomendados/')
             });
