@@ -31,12 +31,35 @@ router.get('/dashboard/users', function(req, res, next) {
 });
 router.get('/dashboard/user/:id', function(req, res, next) {
     models.usuario.findOne({
-        usuario_id:req.params.id,
+        where:{
+            usuario_id:req.params.id,
+        },
         include: [{
             all:true
         }]
     }).then(function (users) {
-        res.render('dashboard/user', { title: 'Dashaboard' ,data:users});
+        if(users)
+            res.render('dashboard/user', { title: 'Dashaboard' ,data:users});
+        else res.redirect('/dashboard/users/')
+    });
+});
+router.post('/dashboard/user/update/:id', function(req, res, next) {
+    models.usuario.findOne({
+        usuario_id:req.params.id
+    }).then(function (user) {
+        if(user)
+            user.update({
+                email:req.body.email,
+                nombres:req.body.nombres,
+                apellidos:req.body.apellidos,
+                edad:req.body.edad,
+                telefono:req.body.telefono
+            }).then(function (user) {
+                res.redirect('/dashboard/user/'+user.usuario_id)
+            }).catch(function (err) {
+                res.redirect('/dashboard/users/')
+            });
+        else res.redirect('/dashboard/users/')
     });
 });
 
