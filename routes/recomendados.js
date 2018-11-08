@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var models = require('../orm/models');
+var S3Service = require('../services/S3Service');
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -49,6 +50,14 @@ router.post('/', function (req, res, next) {
         res.json(result)
     }).catch(function (err) {
         if(err)res.status(400).json(err);
+    });
+});
+router.post('/upload', function (req, res, next) {
+
+    S3Service.upload(req, res, function (err, success) {
+        if (err) res.json(err);
+        else
+            res.json({foto: success})
     });
 });
 module.exports = router;

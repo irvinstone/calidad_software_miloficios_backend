@@ -29,5 +29,10 @@
   "token":{
     "secret":"secret",
     "tiempoExpiracion":6000
+  },
+  "aws":{
+    "secret":"d8L7BzPte7/5W875iKMpuEyVvb8/nm7aruxibTRyoeA",
+    "access":"CR6JOVBV7FJ6Q3KTJENC",
+    "baseHost":"https://calidad-software.sfo2.digitaloceanspaces.com/"
   }
 }

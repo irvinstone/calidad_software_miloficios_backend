@@ -43,4 +43,22 @@ block field
                 .col-md-4
                     p= err
 
+    form.form-horizontal(method='POST',enctype="multipart/form-data" action='/dashboard/recomendado/image/' + data.telefono)
+        fieldset
+            // Form Name
+            legend Recomendado imagen
+            img(src=data.foto)
+            .form-group
+                label.col-md-4.control-label(for='upload') upload
+                .col-md-4
+                    input#upload.form-control.input-md(value=data.upload name='upload', type='file', placeholder='upload', required='')
+
+            // Button
+            .form-group
+                .col-md-4
+                    button#Save.btn.btn-primary(type='submit') Cambiar
+            .form-group
+                .col-md-4
+                    p= err
+
 

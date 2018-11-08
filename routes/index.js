@@ -2,6 +2,7 @@ var express = require('express');
 var usuarioService = require('../services/UserService');
 var models = require('../orm/models');
 var router = express.Router();
+var S3Service = require('../services/S3Service');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -112,6 +113,47 @@ router.post('/dashboard/recomendado/update/:id', function(req, res, next) {
             }).catch(function (err) {
                 res.redirect('/dashboard/recomendados/')
             });
+        else res.redirect('/dashboard/recomendados/')
+    });
+});
+/**
+ * imagen a s3
+ */
+router.get('/dashboard/recomendado/image/:id', function(req, res, next) {
+    models.recomendado.findOne({
+        where:{
+            telefono:req.params.id,
+        },
+        include: [{
+            all:true
+        }]
+    }).then(function (users) {
+        if(users)
+            res.render('dashboard/uploadImage', { title: 'Dashaboard' ,data:users});
+        else res.redirect('/dashboard/recomendados/')
+    });
+});
+router.post('/dashboard/recomendado/image/:id', function(req, res, next) {
+
+    models.recomendado.findOne({
+        where:{
+            telefono:req.params.id
+        }
+    }).then(function (user) {
+        if(user){
+            S3Service.upload(req,res,function (err,success) {
+                if(err) res.redirect('/dashboard/recomendados/');
+                else
+                    user.update({
+                        foto:success,
+                    }).then(function (user) {
+                        res.redirect('/dashboard/recomendado/'+req.params.id)
+                        // res.json({img:success})
+                    }).catch(function (err) {
+                        res.redirect('/dashboard/recomendados/')
+                    });
+            });
+        }
         else res.redirect('/dashboard/recomendados/')
     });
 });

@@ -45,19 +45,19 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false
 		},
 		foto: {
-			type: DataTypes.STRING(45),
+			type: DataTypes.STRING(100),
 			allowNull: true
 		},
 		descripcion:{
-            type: DataTypes.STRING(45),
+            type: DataTypes.STRING(250),
             allowNull: true
 		},
 		facebook:{
-            type: DataTypes.STRING(45),
+            type: DataTypes.STRING(100),
             allowNull: true
 		},
         twitter:{
-            type: DataTypes.STRING(45),
+            type: DataTypes.STRING(100),
             allowNull: true
         }
 	}, {
