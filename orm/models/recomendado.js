@@ -59,6 +59,11 @@ module.exports = function(sequelize, DataTypes) {
         twitter:{
             type: DataTypes.STRING(100),
             allowNull: true
+        },
+        estado:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+			defaultValue:1
         }
 	}, {
 		tableName: 'recomendado',

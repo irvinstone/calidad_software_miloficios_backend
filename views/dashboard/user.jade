@@ -41,4 +41,26 @@ block field
                 .col-md-4
                     p= err
 
+    form.form-horizontal(method='POST', action='/dashboard/user/profile/' + data.telefono)
+        fieldset
+            // Form Name
+            legend Perfil
+            .form-group
+                label.col-md-4.control-label(for='perfil')
+                .col-md-4
+                    select#perfil(name="perfil_id")
+                        - perfiles = [ {name:"Admin",value:1}, {name:"Usuario",value:2}]
+                        each item in perfiles
+                            option(value=item.value selected=data.usuario_perfil.perfil_id == item.value) #{item.name}
+
+            // Button
+            .form-group
+                .col-md-4
+                    button#Cambiar.btn.btn-primary(type='submit') Cambiar
+            .form-group
+                .col-md-4
+                    p= err
+
+
+
 

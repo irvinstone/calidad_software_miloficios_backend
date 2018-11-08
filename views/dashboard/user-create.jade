@@ -1,0 +1,55 @@
+extends ../dashboard
+
+block field
+
+    form.form-horizontal(method='POST')
+        fieldset
+            // Form Name
+            legend Usuario
+            // Text input
+            .form-group
+                label.col-md-4.control-label(for='email') email
+                .col-md-4
+                    input#email.form-control.input-md( name='email', type='email', placeholder='email', required='')
+            .form-group
+                label.col-md-4.control-label(for='contrasena') contraseña
+                .col-md-4
+                    input#contrasena.form-control.input-md( name='contrasena', type='password', placeholder='contraseña', required='')
+            // Text input
+            .form-group
+                label.col-md-4.control-label(for='nombres') nombres
+                .col-md-4
+                    input#nombres.form-control.input-md( name='nombres', type='nombres', placeholder='nombres', required='')
+            // Text input
+            .form-group
+                label.col-md-4.control-label(for='apellidos') apellidos
+                .col-md-4
+                    input#apellidos.form-control.input-md( name='apellidos', type='apellidos', placeholder='apellidos', required='')
+            // Text input
+            .form-group
+                label.col-md-4.control-label(for='edad') edad
+                .col-md-4
+                    input#edad.form-control.input-md( name='edad', type='edad', placeholder='edad', required='')
+            // Password input
+            .form-group
+                label.col-md-4.control-label(for='telefono') telefono
+                .col-md-4
+                    input#telefono.form-control.input-md( name='telefono', type='telefono', placeholder='telefono', required='')
+            .form-group
+                label.col-md-4.control-label(for='perfil') Perfil
+                .col-md-4
+                    select#perfil(name="perfil_id")
+                        - perfiles = [ {name:"Admin",value:1}, {name:"Usuario",value:2}]
+                        each item in perfiles
+                            option(value=item.value) #{item.name}
+            // Button
+            .form-group
+                .col-md-4
+                    button#Guardar.btn.btn-primary(type='submit') Guardar
+                .col-md-4
+                    a(href='/dashboard/users'): button#Editar.btn.btn-primary(type='button') Cancelar
+            .form-group
+                .col-md-4
+                    p= err
+
+

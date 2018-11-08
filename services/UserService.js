@@ -7,7 +7,7 @@ function AuthenticationService() {
 }
 
 function generarToken(data, callback) {
-    models.usuario.findOne({where: {email: data.email}}).then(function (usuario) {
+    models.usuario.findOne({where: {email: data.email,estado:1}}).then(function (usuario) {
         if (usuario) {
             console.log(usuario.contrasena);
             // console.log(crypto.createHash('sha256').update("12345" + config.token.secret).digest('hex'));
