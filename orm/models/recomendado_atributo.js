@@ -32,6 +32,10 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.DATE,
 			allowNull: false
 		},
+        owner:{
+            type:DataTypes.STRING(250),
+            allowNull:true
+        }
 	}, {
 		tableName: 'recomendado_atributo',
         timestamps:false
