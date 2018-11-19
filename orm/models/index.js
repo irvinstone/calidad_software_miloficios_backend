@@ -48,6 +48,8 @@ db.usuario_perfil.perfil = db.usuario_perfil.belongsTo(db.perfil,{foreignKey:'pe
 db.lista.lista_recomendado = db.lista.hasMany(db.lista_recomendado,{foreignKey:'lista_id'});
 db.lista.usuario_perfil = db.lista.belongsTo(db.usuario_perfil,{foreignKey:'usuario_perfil_id'});
 
+db.lista_recomendado.recomendado = db.lista_recomendado.belongsTo(db.recomendado,{foreignKey:'telefono'});
+
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

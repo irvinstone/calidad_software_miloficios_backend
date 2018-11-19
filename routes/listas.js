@@ -9,6 +9,11 @@ router.get('/', function(req, res, next) {
         where:req.query,
         include: [{
             all:true
+        },{
+            model: models.lista_recomendado,
+            include:{
+                model:models.recomendado,
+            }
         }]
     }).then(function (result) {
         res.json(result)
