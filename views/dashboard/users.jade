@@ -4,14 +4,14 @@ block field
 
     fieldset
         legend Usuarios
+        a(href='/dashboard/user/action/create'): button#Crear.btn.btn-primary(type='button') Crear
         each people in data
-                fieldset
+            fieldset.border.border-secondary.list-group-item
                     p= nombre =people.nombres
                     p= people.email
                     .form-group
                         .col-md-4
                             a(href='/dashboard/user/'+people.usuario_id): button#Editar.btn.btn-primary(type='button') Editar
-                            a(href='/dashboard/user/action/create'): button#Crear.btn.btn-primary(type='button') Crear
                             if(people.estado == 1)
                                 a(href='/dashboard/user/action/delete/'+people.usuario_id): button#Crear.btn.btn-primary(type='button') Suspender
                             else

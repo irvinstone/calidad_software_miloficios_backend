@@ -221,5 +221,35 @@ router.post('/dashboard/recomendado/image/:id', function(req, res, next) {
         else res.redirect('/dashboard/recomendados/')
     });
 });
+router.get('/dashboard/recomendado/action/delete/:id', function(req, res, next) {
+    models.recomendado.findOne({
+        where:{
+            telefono:req.params.id
+        }
+    }).then(function (user) {
+        if(user)
+            user.update({
+                estado:0,
+            }).then(function (user) {
+                res.redirect('/dashboard/recomendados/')
+            });
+        else res.redirect('/dashboard/recomendados/')
+    });
+});
+router.get('/dashboard/recomendado/action/activate/:id', function(req, res, next) {
+    models.recomendado.findOne({
+        where:{
+            telefono:req.params.id
+        }
+    }).then(function (user) {
+        if(user)
+            user.update({
+                estado:1,
+            }).then(function (user) {
+                res.redirect('/dashboard/recomendados/')
+            });
+        else res.redirect('/dashboard/recomendados/')
+    });
+});
 
 module.exports = router;
